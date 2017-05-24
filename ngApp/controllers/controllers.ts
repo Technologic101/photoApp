@@ -42,12 +42,22 @@ namespace photos.Controllers {
 
   export class EditController {
     public file;
+    private id;
+
+    private getPhoto() {
+      this.file = this.photoService.get({id: this.id});
+    }
+
+
 
     constructor(private filepickerService,
                 private $scope: ng.IScope,
                 private photoService:photos.Services.PhotoService,
-                private $state:ng.ui.IStateService) {
-      
+                private $state:ng.ui.IStateService,
+                private $stateParams:ng.ui.IStateParamsService
+) {
+        this.id = $stateParams['id'];
+        this.getPhoto();
     }
   }
 

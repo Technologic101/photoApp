@@ -28,19 +28,4 @@ namespace photos.Services {
 
   angular.module('photos').service('photoService', PhotoService);
 
-    export class MovieService {
-        private MovieResource;
-
-        public listMovies() {
-            return this.MovieResource.query();
-        }
-
-        constructor($resource: ng.resource.IResourceService) {
-            this.MovieResource = $resource('/api/movies');
-        }
-    }
-    angular.module('photos').service('movieService', MovieService);
-    export class MyService {
-
-    }
-    }
+}

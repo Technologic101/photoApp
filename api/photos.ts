@@ -6,7 +6,7 @@ let router = express.Router();
 
 // GET single photo
 router.get('/:id', (req, res) => {
-  let photoId = new mongodb.ObjectID(req.params['id']);
+  let photoId = new mongodb.ObjectID(req.query['id']);
   database.db.collection('photos').findOne(photoId).then((photo)=> {
     console.log('Photo:' + photo);
     res.json(photo);

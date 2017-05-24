@@ -1,0 +1,21 @@
+<h2>Edit this Photo</h2>
+
+<img ng-src="{{photo.url}}" />
+<h3>{{photo.title}}</h3>
+<p>{{photo.description}}</p>
+
+<hr/>
+
+<form ng-submit="controller.savePhoto()">
+  <button ng-click="controller.pickFile()">Upload</button>
+
+  <div class="form-group">
+    <label>Title:</label>
+    <input ng-model="controller.photo.title" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Description:</label>
+    <textarea ng-model="controller.photo.description" class="form-control" ></textarea>
+  </div>
+  <button class="btn btn-primary">Add Photo</button>
+</form>

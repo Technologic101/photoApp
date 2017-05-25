@@ -5,15 +5,13 @@ var db_1 = require("../db");
 var mongodb = require("mongodb");
 var router = express.Router();
 router.get('/:id', function (req, res) {
-    var photoId = new mongodb.ObjectID(req.query['id']);
+    var photoId = new mongodb.ObjectID(req.params['id']);
     db_1.default.db.collection('photos').findOne(photoId).then(function (photo) {
-        console.log('Photo:' + photo);
         res.json(photo);
     });
 });
 router.get('/', function (req, res) {
     db_1.default.db.collection('photos').find().toArray().then(function (photos) {
-        console.log("From Router: " + photos);
         res.json(photos);
     });
 });
@@ -24,9 +22,8 @@ router.post('/', function (req, res) {
         res.json(newphoto);
     });
 });
-router.delete('/', function (req, res) {
-    var photoId = new mongodb.ObjectID(req.query['id']);
-    console.log('router delete called');
+router.delete('/:id', function (req, res) {
+    var photoId = new mongodb.ObjectID(req.params['id']);
     db_1.default.db.collection('photos').remove({ _id: photoId }).then(function () {
         res.sendStatus(200);
     });

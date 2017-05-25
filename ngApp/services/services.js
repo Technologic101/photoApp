@@ -4,7 +4,7 @@ var photos;
     (function (Services) {
         var PhotoService = (function () {
             function PhotoService($resource) {
-                this.PhotoResource = $resource('/api/photos');
+                this.PhotoResource = $resource('/api/photos/:id');
             }
             PhotoService.prototype.get = function (id) {
                 return this.PhotoResource.get({ id: id });
@@ -16,7 +16,6 @@ var photos;
                 return this.PhotoResource.save(photo).$promise;
             };
             PhotoService.prototype.remove = function (id) {
-                console.log('called');
                 return this.PhotoResource.delete({ id: id }).$promise;
             };
             return PhotoService;

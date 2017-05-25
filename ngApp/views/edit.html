@@ -1,8 +1,8 @@
 <h2>Edit this Photo</h2>
-
-<img ng-src="{{photo.url}}" />
-<h3>{{photo.title}}</h3>
-<p>{{photo.description}}</p>
+<p>{{controller.photo}}</p>
+<img ng-src="{{controller.photo.url}}" />
+<h3>{{controller.photo.title}}</h3>
+<p>{{controller.photo.description}}</p>
 
 <hr/>
 
@@ -17,5 +17,5 @@
     <label>Description:</label>
     <textarea ng-model="controller.photo.description" class="form-control" ></textarea>
   </div>
-  <button class="btn btn-primary">Add Photo</button>
+  <button class="btn btn-primary">Update Photo</button>
 </form>

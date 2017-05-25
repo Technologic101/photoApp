@@ -25,7 +25,6 @@ namespace photos.Controllers {
 
       public remove(id) {
         this.photoService.remove(id).then(() => {
-          console.log('hi from remove callback');
           this.photos = this.photoService.list();
           this.$state.go('home');
         });
@@ -41,14 +40,20 @@ namespace photos.Controllers {
   }
 
   export class EditController {
-    public file;
+    public photo;
     private id;
 
     private getPhoto() {
-      this.file = this.photoService.get({id: this.id});
+      this.photo = this.photoService.get(this.id);
+      console.log(this.photo._id);
     }
 
-
+    public savePhoto() {
+      this.photo.id = this.id;
+      this.photoService.save(this.photo).then( () => {
+        this.$state.go('home');
+      })
+    }
 
     constructor(private filepickerService,
                 private $scope: ng.IScope,

@@ -27,7 +27,6 @@ var photos;
             HomeController.prototype.remove = function (id) {
                 var _this = this;
                 this.photoService.remove(id).then(function () {
-                    console.log('hi from remove callback');
                     _this.photos = _this.photoService.list();
                     _this.$state.go('home');
                 });
@@ -46,7 +45,15 @@ var photos;
                 this.getPhoto();
             }
             EditController.prototype.getPhoto = function () {
-                this.file = this.photoService.get({ id: this.id });
+                this.photo = this.photoService.get(this.id);
+                console.log(this.photo._id);
+            };
+            EditController.prototype.savePhoto = function () {
+                var _this = this;
+                this.photo.id = this.id;
+                this.photoService.save(this.photo).then(function () {
+                    _this.$state.go('home');
+                });
             };
             return EditController;
         }());

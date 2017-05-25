@@ -16,13 +16,12 @@ namespace photos.Services {
     }
 
     public remove(id) {
-      console.log('called');
       return this.PhotoResource.delete({id:id}).$promise;
     }
 
 
     constructor($resource: ng.resource.IResourceService) {
-        this.PhotoResource = $resource('/api/photos');
+        this.PhotoResource = $resource('/api/photos/:id');
     }
   }
 

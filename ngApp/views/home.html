@@ -11,11 +11,10 @@
     <label>Description:</label>
     <textarea ng-model="controller.file.description" class="form-control" ></textarea>
   </div>
+  <h2>{{controller.file.filename}}</h2>
+  <img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" />
   <button class="btn btn-primary">Add Photo</button>
 </form>
-
-<h2>{{controller.file.filename}}</h2>
-<img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" />
 
 <h2>Your Photos</h2>
 <ul>
